@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FontAwesome, FontAwesome5, Ionicons } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
 
 import HomeScreen from "../screens/homeScreen";
 import BookingScreen from "../screens/bookingScreen";
+import ProfileScreen from "../screens/profile";
 
 const Tabs = createBottomTabNavigator();
 
@@ -34,7 +35,7 @@ const TabsNavigator = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <FontAwesome5
-              name="notes-medical"
+              name="home"
               size={24}
               color={focused ? "#00FF7F" : "#fff"}
             />

@@ -6,9 +6,9 @@ import { AntDesign } from '@expo/vector-icons';
 import styles from './style';
 import saloonIcon from "../../../assets/images/saloon.png"
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation,route}) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.mainContainer}>
       <View style={styles.headerContainer}>
         <Image
           source={saloonIcon}

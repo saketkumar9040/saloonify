@@ -1,4 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { FontAwesome, FontAwesome5, Ionicons } from "@expo/vector-icons";
+
 import HomeScreen from "../screens/homeScreen";
 import BookingScreen from "../screens/bookingScreen";
 
@@ -26,7 +28,7 @@ const TabsNavigator = () => {
       }}
     >
       <Tabs.Screen
-        name="Doses List"
+        name="Home"
         component={HomeScreen}
         options={{
           headerShown: false,
@@ -40,7 +42,7 @@ const TabsNavigator = () => {
         }}
       />
       <Tabs.Screen
-        name="Add Remainder"
+        name="Book Now"
         component={BookingScreen}
         options={{
           headerShown: false,

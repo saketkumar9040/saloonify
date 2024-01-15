@@ -41,10 +41,26 @@ const HomeScreen = ({ navigation, route }) => {
           <Text style={styles.bookNowText}>Book Now</Text>
           <AntDesign name="arrowright" size={16} color="black" />
         </TouchableOpacity>
-        <View>
-          <FlatList />
-        </View>
       </View>
+      <View>
+        <FlatList
+          data={grommingList}
+          contentContainerStyle={{flexDirection : "row", flexWrap : "wrap"}} 
+          renderItem={({item, index}) => {
+            console.log(item)
+            return (
+              <TouchableOpacity style={{alignItems:"center", backgroundColor: "#4c4c4c", height: 100, width: 100, margin: 100, }}>
+                <Image
+                 source={item.image}
+                 style={{width:50,height:50,resizeMode:"contain"}}
+                />
+                <Text>{item.serviceType}</Text>
+              </TouchableOpacity>
+            )
+          }}
+        />
+      </View>
+
     </SafeAreaView>
   )
 }

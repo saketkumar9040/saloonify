@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     },
     saloonImage: {
         width: 200,
-        height: 200
+        height: 200,
+        resizeMode:"contain"
     },
     bookNowButtonContainer: {
         flexDirection: "row",

@@ -1,6 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AntDesign } from '@expo/vector-icons';
 
 import styles from './style';
 import saloonIcon from "../../../assets/images/saloon.png"
@@ -8,13 +9,14 @@ import saloonIcon from "../../../assets/images/saloon.png"
 const HomeScreen = () => {
   return (
     <SafeAreaView>
-      <View style={{ flexDirection: "row", alignItems: "center",justifyContent:"space-between", backgroundColor: "#4c4c4c", height: "60%", padding: 20, }}>
+      <View style={styles.headerContainer}>
         <Image
           source={saloonIcon}
-          style={{ width: 200, height: 200 }}
+          style={styles.saloonImage}
         />
-      <TouchableOpacity style={{marginRight:10,backgroundColor:"#ffffff",padding:5,paddingHorizontal:20,}}>
-        <Text>Book Now</Text>
+      <TouchableOpacity style={styles.bookNowButtonContainer}>
+        <Text style={styles.bookNowText}>Book Now</Text>
+        <AntDesign name="arrowright" size={16} color="black" />
       </TouchableOpacity>
       </View>
     </SafeAreaView>

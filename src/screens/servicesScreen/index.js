@@ -3,12 +3,12 @@ import React from 'react';
 
 import styles from "./style.js"
 
-const BookingScreen = () => {
+const ServicesScreen = () => {
   return (
     <View>
-      <Text>BookingScreen</Text>
+      <Text>ServicesScreen</Text>
     </View>
   )
 }
 
-export default BookingScreen;
+export default ServicesScreen;

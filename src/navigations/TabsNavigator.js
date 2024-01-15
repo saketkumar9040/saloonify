@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { FontAwesome, FontAwesome5 } from "@expo/vector-icons";
+import { FontAwesome, FontAwesome5,Octicons } from "@expo/vector-icons";
 
 import HomeScreen from "../screens/homeScreen";
-import BookingScreen from "../screens/bookingScreen";
 import ProfileScreen from "../screens/profile";
+import ServicesScreen from "../screens/servicesScreen";
 
 const Tabs = createBottomTabNavigator();
 
@@ -20,8 +20,8 @@ const TabsNavigator = () => {
           paddingVertical: 7,
         },
         tabBarLabelStyle: {
-          fontSize: 13,
-          fontWeight: "800",
+          fontSize: 12,
+          fontWeight: "600",
           marginBottom: 5,
         },
         tabBarActiveTintColor: "#00FF7F",
@@ -43,16 +43,13 @@ const TabsNavigator = () => {
         }}
       />
       <Tabs.Screen
-        name="Book Now"
-        component={BookingScreen}
+        name="Services"
+        component={ServicesScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (
-            <FontAwesome5
-              name="capsules"
-              size={24}
-              color={focused ? "#00FF7F" : "#fff"}
-            />
+            <FontAwesome name="scissors" size={24}
+            color={focused ? "#00FF7F" : "#fff"} />
           ),
         }}
       />

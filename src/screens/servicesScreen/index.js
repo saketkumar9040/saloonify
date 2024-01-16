@@ -1,11 +1,13 @@
-import { View, Text, FlatList, TouchableOpacity, Image } from 'react-native'
-import React from 'react';
+import { View, Text, FlatList, TouchableOpacity, Modal } from 'react-native'
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { AntDesign } from '@expo/vector-icons';
 
 import styles from "./style.js";
 
 const services = [
   {
+    id:1,
     type: "Hair Cut",
     time: "20 min",
     slot: "available",
@@ -13,6 +15,7 @@ const services = [
     price: "Rs 150"
   },
   {
+    id:2,
     type: "Shaving",
     time: "12 min",
     slot: "available",
@@ -20,6 +23,7 @@ const services = [
     price: "Rs 100"
   },
   {
+    id:3,
     type: "Hair coloring",
     time: "50 min",
     slot: "booked",
@@ -27,6 +31,7 @@ const services = [
     price: "Rs 350"
   },
   {
+    id:4,
     type: "Hair Cut",
     time: "30 min",
     slot: "available",
@@ -34,6 +39,7 @@ const services = [
     price: "Rs 200"
   },
   {
+    id:5,
     type: "Hair Cut",
     time: "40 min",
     slot: "available",
@@ -41,6 +47,7 @@ const services = [
     price: "Rs 160"
   },
   {
+    id:6,
     type: "Hair Cut",
     time: "35 min",
     slot: "available",
@@ -50,11 +57,21 @@ const services = [
 ];
 
 const ServicesScreen = () => {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
+
   return (
     <SafeAreaView style={styles.mainContainer}>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={modalVisible}
+      >
+        <AntDesign name="closecircle" size={24} color="black" onPress={() => setModalVisible(false)} />
+      </Modal>
       <FlatList
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom:20,}}
+        contentContainerStyle={{ paddingBottom: 20, }}
         data={services}
         renderItem={({ item, index }) => {
           return (
@@ -65,6 +82,7 @@ const ServicesScreen = () => {
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
 
                   <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "green" }}>{item.price}</Text>
+                  <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "#D4AC0D" }}>{item.time}</Text>
                   {item.slot === "available" ? (
 
                     <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "green" }}>{item.slot}</Text>
@@ -74,10 +92,10 @@ const ServicesScreen = () => {
                 </View>
               </View>
               {
-                item.slot ==="available" && (
-              <TouchableOpacity style={{alignSelf:"center",backgroundColor:"#0096ff",paddingHorizontal:30,padding:2,}}>
-                <Text style={{fontSize:15,fontWeight:"700",color:"#ffffff"}}>Book</Text>
-              </TouchableOpacity>
+                item.slot === "available" && (
+                  <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "#0096ff", paddingHorizontal: 30, padding: 2, elevation: 10, marginVertical: 10, }}>
+                    <Text style={{ fontSize: 15, fontWeight: "700", color: "#ffffff" }}>Book</Text>
+                  </TouchableOpacity>
                 )
               }
             </>

@@ -192,7 +192,6 @@ const ServicesScreen = ({navigation,route}) => {
       setSelectedTimeSlots("");
       setModalVisible(false);
       navigation.navigate("Bookings")
-      
     }
   };
 

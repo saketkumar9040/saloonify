@@ -22,8 +22,8 @@
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       }
-    },   
-     "androidNavigationBar": {
+    },
+    "androidNavigationBar": {
       "backgroundColor": "#4c4c4c",
       "barStyle": "light-content"
     },
@@ -33,6 +33,17 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "64294297-aa59-4205-9b2d-9f93f0ed74be"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/64294297-aa59-4205-9b2d-9f93f0ed74be"
     }
   }
 }

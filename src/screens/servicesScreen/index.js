@@ -178,9 +178,8 @@ const ServicesScreen = () => {
     } catch (error) {
       console.log(error)
     }
-  }
-
-  console.log(selectedService)
+  };
+  console.log(selectedTimeSlots)
 
   return (
     <SafeAreaView style={styles.mainContainer}>
@@ -210,21 +209,25 @@ const ServicesScreen = () => {
         />
         <Text style={{ fontSize: 17, fontWeight: "800", margin: 10, }}>Pick a time slot</Text>
         <Picker
+            
           selectedValue={selectedTimeSlots}
+          itemStyle={{color:"#000000",fontSize:15,}}
           onValueChange={(itemValue, itemIndex) =>
             setSelectedTimeSlots(itemValue)
           }>
-            <Picker.Item label="Pick a time slot" value="" />
+            <Picker.Item label="Pick a time slot" value=""  style={{fontSize:17}}/>
             {
             selectedService &&  selectedService.timeSlots.map((item,index)=>{
-                <Picker.Item label={item.timing} value={item} />
+              return(
+                <Picker.Item label={`${item.timing}`} value={item} key={index}  style={{fontSize:17}}/>
+              )
               })
             }  
         </Picker>
-        <Text style={{borderTopWidth:1,borderColor:"#4c4c4c",marginHorizontal:10,}}></Text>
+        <Text style={{borderTopWidth:1,borderColor:"#4c4c4c",marginHorizontal:10,marginTop:-10}}></Text>
         <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "green", paddingHorizontal: 50, padding: 2, elevation: 10, marginTop: 40, borderRadius: 50, }}
           onPress={() => {
-
+             bookingHandler()
           }}
         >
           <Text style={{ fontSize: 15, fontWeight: "700", color: "#ffffff" }}>Book</Text>

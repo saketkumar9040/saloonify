@@ -47,14 +47,13 @@ const HomeScreen = ({ navigation, route }) => {
           style={{flexDirection:"column"}}
           numColumns={2}
           renderItem={({item, index}) => {
-            console.log(item)
             return (
-              <TouchableOpacity style={{alignItems:"center",justifyContent:"center", backgroundColor: "#4c4c4c", height: 130, width: 130,margin:30 }}>
+              <TouchableOpacity style={{alignItems:"center",justifyContent:"center", backgroundColor: "#4c4c4c", height: 170, width: 175,margin:10 }}>
                 <Image
                  source={item.image}
-                 style={{width:50,height:50,resizeMode:"contain"}}
+                 style={{width:80,height:80,resizeMode:"contain"}}
                 />
-                <Text style={{fontSize:13,fontWeight:"700",color:"#ffffff"}}>{item.serviceType}</Text>
+                <Text style={{fontSize:16,fontWeight:"700",color:"#ffffff",marginTop:10,}}>{item.serviceType}</Text>
               </TouchableOpacity>
             )
           }}

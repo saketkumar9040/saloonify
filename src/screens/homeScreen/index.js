@@ -44,12 +44,12 @@ const HomeScreen = ({ navigation, route }) => {
       </View>
         <FlatList
           data={grommingList}
-          style={{flexDirection:"column",width:"100%"}}
+          style={{flexDirection:"column"}}
           numColumns={2}
           renderItem={({item, index}) => {
             console.log(item)
             return (
-              <TouchableOpacity style={{alignItems:"center", backgroundColor: "#4c4c4c", height: 100, width: 100, margin: 100, }}>
+              <TouchableOpacity style={{alignItems:"center",justifyContent:"center", backgroundColor: "#4c4c4c", height: 130, width: 130,margin:30 }}>
                 <Image
                  source={item.image}
                  style={{width:50,height:50,resizeMode:"contain"}}

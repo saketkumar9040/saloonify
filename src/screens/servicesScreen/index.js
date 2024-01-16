@@ -180,6 +180,8 @@ const ServicesScreen = () => {
     }
   }
 
+  console.log(selectedService)
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <Modal
@@ -210,11 +212,14 @@ const ServicesScreen = () => {
         <Picker
           selectedValue={selectedTimeSlots}
           onValueChange={(itemValue, itemIndex) =>
-            setSelectedLanguage(itemValue)
+            setSelectedTimeSlots(itemValue)
           }>
-          
-          <Picker.Item label="Java" value="java" />
-          <Picker.Item label="JavaScript" value="js" />
+            <Picker.Item label="Pick a time slot" value="" />
+            {
+            selectedService &&  selectedService.timeSlots.map((item,index)=>{
+                <Picker.Item label={item.timing} value={item} />
+              })
+            }  
         </Picker>
         <Text style={{borderTopWidth:1,borderColor:"#4c4c4c",marginHorizontal:10,}}></Text>
         <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "green", paddingHorizontal: 50, padding: 2, elevation: 10, marginTop: 40, borderRadius: 50, }}
@@ -252,7 +257,7 @@ const ServicesScreen = () => {
                   <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "#0096ff", paddingHorizontal: 30, padding: 2, elevation: 10, marginVertical: 10, }}
                     onPress={() => {
                       setModalVisible(true)
-                      bookingHandler(item.id, item.timeSlots)
+                      setSelectedService(item)
                     }}
                   >
                     <Text style={{ fontSize: 15, fontWeight: "700", color: "#ffffff" }}>Book</Text>

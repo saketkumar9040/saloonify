@@ -10,49 +10,133 @@ const services = [
     id:1,
     type: "Hair Cut",
     time: "20 min",
-    slot: "available",
+    status: "available",
     description: "best hair in the world",
-    price: "Rs 150"
+    price: "Rs 150",
+    timeSlots:[
+      {timing:"9:00 Am",
+       booked:false
+      },
+      {timing:"10:00 Am",
+       booked:false
+      },
+      {timing:"11:00 Am",
+       booked:false
+      },
+      {timing:"12:00 Pm",
+       booked:false
+      },
+    ]
   },
   {
     id:2,
     type: "Shaving",
     time: "12 min",
-    slot: "available",
+    status: "available",
     description: "This hair cut will bring your confidence back",
-    price: "Rs 100"
+    price: "Rs 100",
+    timeSlots:[
+      {timing:"9:00 Am",
+       booked:false
+      },
+      {timing:"10:00 Am",
+       booked:false
+      },
+      {timing:"11:00 Am",
+       booked:false
+      },
+      {timing:"12:00 Pm",
+       booked:false
+      },
+    ]
   },
   {
     id:3,
     type: "Hair coloring",
     time: "50 min",
-    slot: "booked",
+    status: "booked",
     description: "The color of your passion",
-    price: "Rs 350"
+    price: "Rs 350",
+    timeSlots:[
+      {timing:"9:00 Am",
+       booked:false
+      },
+      {timing:"10:00 Am",
+       booked:false
+      },
+      {timing:"11:00 Am",
+       booked:false
+      },
+      {timing:"12:00 Pm",
+       booked:false
+      },
+    ]
   },
   {
     id:4,
     type: "Hair Cut",
     time: "30 min",
-    slot: "available",
+    status: "available",
     description: "Style with attitude",
-    price: "Rs 200"
+    price: "Rs 200",
+    timeSlots:[
+      {timing:"9:00 Am",
+       booked:false
+      },
+      {timing:"10:00 Am",
+       booked:false
+      },
+      {timing:"11:00 Am",
+       booked:false
+      },
+      {timing:"12:00 Pm",
+       booked:false
+      },
+    ]
   },
   {
     id:5,
     type: "Hair Cut",
     time: "40 min",
-    slot: "available",
+    status: "available",
     description: "This hair cut will bring your confidence back",
-    price: "Rs 160"
+    price: "Rs 160",
+    timeSlots:[
+      {timing:"9:00 Am",
+       booked:false
+      },
+      {timing:"10:00 Am",
+       booked:false
+      },
+      {timing:"11:00 Am",
+       booked:false
+      },
+      {timing:"12:00 Pm",
+       booked:false
+      },
+    ]
   },
   {
     id:6,
     type: "Hair Cut",
     time: "35 min",
-    slot: "available",
+    status: "available",
     description: "This hair cut will bring your confidence back",
-    price: "Rs 130"
+    price: "Rs 130",
+    timeSlots:[
+      {timing:"9:00 Am",
+       booked:false
+      },
+      {timing:"10:00 Am",
+       booked:false
+      },
+      {timing:"11:00 Am",
+       booked:false
+      },
+      {timing:"12:00 Pm",
+       booked:false
+      },
+    ]
   },
 ];
 
@@ -60,14 +144,22 @@ const ServicesScreen = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedService, setSelectedService] = useState("");
 
+  const bookingHandler = async (id) => {
+    try {
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return (
     <SafeAreaView style={styles.mainContainer}>
       <Modal
         animationType="slide"
-        transparent={true}
+        transparent={false}
         visible={modalVisible}
       >
-        <AntDesign name="closecircle" size={24} color="black" onPress={() => setModalVisible(false)} />
+        <AntDesign name="closecircle" size={30} color="red" style={{alignSelf:"center",marginVertical:20,}} onPress={() => setModalVisible(false)} />
       </Modal>
       <FlatList
         showsVerticalScrollIndicator={false}
@@ -83,17 +175,22 @@ const ServicesScreen = () => {
 
                   <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "green" }}>{item.price}</Text>
                   <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "#D4AC0D" }}>{item.time}</Text>
-                  {item.slot === "available" ? (
+                  {item.status === "available" ? (
 
-                    <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "green" }}>{item.slot}</Text>
+                    <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "green" }}>{item.status}</Text>
                   ) : (
-                    <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "red" }}>{item.slot}</Text>
+                    <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "red" }}>{item.status}</Text>
                   )}
                 </View>
               </View>
               {
-                item.slot === "available" && (
-                  <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "#0096ff", paddingHorizontal: 30, padding: 2, elevation: 10, marginVertical: 10, }}>
+                item.status === "available" && (
+                  <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "#0096ff", paddingHorizontal: 30, padding: 2, elevation: 10, marginVertical: 10, }}
+                  onPress={()=>{
+                    setModalVisible(true)
+                    bookingHandler(item.id)
+                  }}
+                  >
                     <Text style={{ fontSize: 15, fontWeight: "700", color: "#ffffff" }}>Book</Text>
                   </TouchableOpacity>
                 )

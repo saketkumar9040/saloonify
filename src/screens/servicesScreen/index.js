@@ -54,6 +54,7 @@ const ServicesScreen = () => {
     <SafeAreaView style={styles.mainContainer}>
       <FlatList
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{paddingBottom:20,}}
         data={services}
         renderItem={({ item, index }) => {
           return (
@@ -72,9 +73,13 @@ const ServicesScreen = () => {
                   )}
                 </View>
               </View>
-              <TouchableOpacity style={{alignSelf:"center",backgroundColor:"#0096ff"}}>
-                <Text>Book</Text>
+              {
+                item.slot ==="available" && (
+              <TouchableOpacity style={{alignSelf:"center",backgroundColor:"#0096ff",paddingHorizontal:30,padding:2,}}>
+                <Text style={{fontSize:15,fontWeight:"700",color:"#ffffff"}}>Book</Text>
               </TouchableOpacity>
+                )
+              }
             </>
           )
         }}

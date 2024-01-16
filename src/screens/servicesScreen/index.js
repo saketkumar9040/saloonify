@@ -187,6 +187,9 @@ const ServicesScreen = ({navigation,route}) => {
     } catch (error) {
       console.log(error)
     } finally {
+      setName("");
+      setEmail("");
+      setSelectedTimeSlots("");
       setModalVisible(false);
       navigation.navigate("Bookings")
       

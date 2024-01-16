@@ -2,8 +2,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome, FontAwesome5,Octicons } from "@expo/vector-icons";
 
 import HomeScreen from "../screens/homeScreen";
-import ProfileScreen from "../screens/profile";
 import ServicesScreen from "../screens/servicesScreen";
+import BookingScreen from "../screens/booking";
 
 const Tabs = createBottomTabNavigator();
 
@@ -54,8 +54,8 @@ const TabsNavigator = () => {
         }}
       />
       <Tabs.Screen
-        name="Profile"
-        component={ProfileScreen}
+        name="Bookings"
+        component={BookingScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (

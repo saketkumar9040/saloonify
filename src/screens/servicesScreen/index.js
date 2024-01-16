@@ -182,9 +182,12 @@ const ServicesScreen = () => {
      }
      if(selectedTimeSlots===""){
       return Alert.alert("Oops🙁","Please select a time slot")
-     }
+     };
+     Alert.alert("Hurray😊","your booking has been confirmed");
     } catch (error) {
       console.log(error)
+    } finally {
+      setModalVisible(false);
     }
   };
   console.log(selectedTimeSlots)

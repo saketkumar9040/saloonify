@@ -4,12 +4,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import styles from './style';
 
-const ProfileScreen = () => {
+const BookingScreen = () => {
   return (
     <SafeAreaView>
-      <Text>ProfileScreen</Text>
+      <Text>cBookingScreen</Text>
     </SafeAreaView>
   )
 }
 
-export default ProfileScreen;
+export default BookingScreen;

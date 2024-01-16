@@ -42,10 +42,10 @@ const HomeScreen = ({ navigation, route }) => {
           <AntDesign name="arrowright" size={16} color="black" />
         </TouchableOpacity>
       </View>
-      <View>
         <FlatList
           data={grommingList}
-          contentContainerStyle={{flexDirection : "row", flexWrap : "wrap"}} 
+          style={{flexDirection:"column",width:"100%"}}
+          numColumns={2}
           renderItem={({item, index}) => {
             console.log(item)
             return (
@@ -54,13 +54,11 @@ const HomeScreen = ({ navigation, route }) => {
                  source={item.image}
                  style={{width:50,height:50,resizeMode:"contain"}}
                 />
-                <Text>{item.serviceType}</Text>
+                <Text style={{fontSize:13,fontWeight:"700",color:"#ffffff"}}>{item.serviceType}</Text>
               </TouchableOpacity>
             )
           }}
         />
-      </View>
-
     </SafeAreaView>
   )
 }

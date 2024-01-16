@@ -165,7 +165,7 @@ const services = [
   },
 ];
 
-const ServicesScreen = () => {
+const ServicesScreen = ({navigation,route}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedService, setSelectedService] = useState("");
   const [email, setEmail] = useState("");
@@ -188,9 +188,10 @@ const ServicesScreen = () => {
       console.log(error)
     } finally {
       setModalVisible(false);
+      navigation.navigate("Bookings")
+      
     }
   };
-  console.log(selectedTimeSlots)
 
   return (
     <SafeAreaView style={styles.mainContainer}>

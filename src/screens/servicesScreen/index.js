@@ -2,6 +2,7 @@ import { View, Text, FlatList, TouchableOpacity, Modal, TextInput } from 'react-
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AntDesign } from '@expo/vector-icons';
+import { Picker } from '@react-native-picker/picker';
 
 import styles from "./style.js";
 
@@ -187,15 +188,42 @@ const ServicesScreen = () => {
         visible={modalVisible}
       >
         <AntDesign name="closecircle" size={30} color="red" style={{ alignSelf: "center", marginVertical: 20, }} onPress={() => setModalVisible(false)} />
-        <Text style={{fontSize:17,fontWeight:"800",margin:10,}}>Name</Text>
+        <Text style={{ fontSize: 17, fontWeight: "800", margin: 10, }}>Name</Text>
         <TextInput
-          style={{borderWidth:1,borderColor:"#4c4c4c",marginHorizontal:10,paddingHorizontal:15,padding:5,}}
+          style={{ borderWidth: 1, borderColor: "#4c4c4c", marginHorizontal: 10, paddingHorizontal: 15, padding: 5, }}
           value={name}
           placeholder='Enter your name'
-          onChangeText={(e)=>{
+          onChangeText={(e) => {
             setName(e)
           }}
         />
+        <Text style={{ fontSize: 17, fontWeight: "800", margin: 10, }}>Email</Text>
+        <TextInput
+          style={{ borderWidth: 1, borderColor: "#4c4c4c", marginHorizontal: 10, paddingHorizontal: 15, padding: 5, }}
+          value={email}
+          placeholder='Enter your Email'
+          onChangeText={(e) => {
+            setEmail(e)
+          }}
+        />
+        <Text style={{ fontSize: 17, fontWeight: "800", margin: 10, }}>Pick a time slot</Text>
+        <Picker
+          selectedValue={selectedTimeSlots}
+          onValueChange={(itemValue, itemIndex) =>
+            setSelectedLanguage(itemValue)
+          }>
+          
+          <Picker.Item label="Java" value="java" />
+          <Picker.Item label="JavaScript" value="js" />
+        </Picker>
+        <Text style={{borderTopWidth:1,borderColor:"#4c4c4c",marginHorizontal:10,}}></Text>
+        <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "green", paddingHorizontal: 50, padding: 2, elevation: 10, marginTop: 40, borderRadius: 50, }}
+          onPress={() => {
+
+          }}
+        >
+          <Text style={{ fontSize: 15, fontWeight: "700", color: "#ffffff" }}>Book</Text>
+        </TouchableOpacity>
       </Modal>
       <FlatList
         showsVerticalScrollIndicator={false}

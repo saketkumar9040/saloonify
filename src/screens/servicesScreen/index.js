@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity, Modal, TextInput } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, Modal, TextInput, Alert } from 'react-native'
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { AntDesign } from '@expo/vector-icons';
@@ -172,9 +172,17 @@ const ServicesScreen = () => {
   const [name, setName] = useState("");
   const [selectedTimeSlots, setSelectedTimeSlots] = useState("");
 
-  const bookingHandler = async (id, timeSlots) => {
+  const bookingHandler = async () => {
     try {
-      console.log(timeSlots)
+     if(name===""){
+      return Alert.alert("Oops🙁","Name cannot be empty")
+     }
+     if(email===""){
+      return Alert.alert("Oops🙁","Email cannot be empty")
+     }
+     if(selectedTimeSlots===""){
+      return Alert.alert("Oops🙁","Please select a time slot")
+     }
     } catch (error) {
       console.log(error)
     }
@@ -207,7 +215,7 @@ const ServicesScreen = () => {
             setEmail(e)
           }}
         />
-        <Text style={{ fontSize: 17, fontWeight: "800", margin: 10, }}>Pick a time slot</Text>
+        <Text style={{ fontSize: 17, fontWeight: "800", margin: 10, }}>Available slot</Text>
         <Picker
             
           selectedValue={selectedTimeSlots}

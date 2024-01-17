@@ -5,6 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 
 import styles from "./style.js";
+import data from "../../../assets/data.json"
 
 const ServicesScreen = ({navigation,route}) => {
   const [modalVisible, setModalVisible] = useState(false);
@@ -24,10 +25,9 @@ const ServicesScreen = ({navigation,route}) => {
      if(selectedTimeSlots===""){
       return Alert.alert("Oops🙁","Please select a time slot")
      };
-     const changeStatus = services.filter((item,index)=>{
-         item.id == selectedService.id
-     });
-     console.log(changeStatus)
+      const changeStatus = data.services[`${selectedService.id}`].timeSlots;
+      console.log(changeStatus)
+   
 
      Alert.alert("Hurray😊","your booking has been confirmed");
     } catch (error) {
@@ -97,7 +97,7 @@ const ServicesScreen = ({navigation,route}) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 20, }}
-        data={services}
+        data={data.services}
         renderItem={({ item, index }) => {
           return (
             <>

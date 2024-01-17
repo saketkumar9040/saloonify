@@ -13,6 +13,8 @@ const ServicesScreen = ({navigation,route}) => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [selectedTimeSlots, setSelectedTimeSlots] = useState("");
+  const [bookedItem,setBookedItem]= useState([]);
+  console.log(bookedItem)
 
   const bookingHandler = async () => {
     try {
@@ -22,11 +24,10 @@ const ServicesScreen = ({navigation,route}) => {
      if(email===""){
       return Alert.alert("Oops🙁","Email cannot be empty")
      }
-     if(selectedTimeSlots===""){
-      return Alert.alert("Oops🙁","Please select a time slot")
-     };
-     
-
+    //  if(selectedTimeSlots===""){
+    //   return Alert.alert("Oops🙁","Please select a time slot")
+    //  };
+     setBookedItem([selectedService.id])
      Alert.alert("Hurray😊","your booking has been confirmed");
     } catch (error) {
       console.log(error)
@@ -34,7 +35,7 @@ const ServicesScreen = ({navigation,route}) => {
      finally {
       setName("");
       setEmail("");
-      setSelectedTimeSlots("");
+      // setSelectedTimeSlots("");
       setModalVisible(false);
     }
   };
@@ -65,8 +66,8 @@ const ServicesScreen = ({navigation,route}) => {
             setEmail(e)
           }}
         />
-        <Text style={{ fontSize: 17, fontWeight: "800", margin: 10, }}>Available slot</Text>
-        <Picker
+        {/* <Text style={{ fontSize: 17, fontWeight: "800", margin: 10, }}>Available slot</Text> */}
+        {/* <Picker
             
           selectedValue={selectedTimeSlots}
           itemStyle={{color:"#000000",fontSize:15,}}
@@ -81,8 +82,8 @@ const ServicesScreen = ({navigation,route}) => {
               )
               })
             }  
-        </Picker>
-        <Text style={{borderTopWidth:1,borderColor:"#4c4c4c",marginHorizontal:10,marginTop:-10}}></Text>
+        </Picker> */}
+        {/* <Text style={{borderTopWidth:1,borderColor:"#4c4c4c",marginHorizontal:10,marginTop:-10}}></Text> */}
         <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "green", paddingHorizontal: 50, padding: 2, elevation: 10, marginTop: 40, borderRadius: 50, }}
           onPress={() => {
              bookingHandler()
@@ -109,16 +110,16 @@ const ServicesScreen = ({navigation,route}) => {
 
                   <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "green" }}>{item.price}</Text>
                   <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "#D4AC0D" }}>{item.time}</Text>
-                  {item.status === "available" ? (
+                  {!bookedItem.includes(item.id) ? (
 
-                    <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "green" }}>{item.status}</Text>
+                    <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "green" }}>Available</Text>
                   ) : (
-                    <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "red" }}>{item.status}</Text>
+                    <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color: "red" }}>Booked</Text>
                   )}
                 </View>
               </View>
               {
-                item.status === "available" && (
+                !bookedItem.includes(item.id)&& (
                   <TouchableOpacity style={{ alignSelf: "center", backgroundColor: "#0096ff", paddingHorizontal: 30, padding: 2, elevation: 10, marginVertical: 10, }}
                     onPress={() => {
                       setModalVisible(true)

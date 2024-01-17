@@ -48,7 +48,9 @@ const HomeScreen = ({ navigation, route }) => {
           numColumns={2}
           renderItem={({item, index}) => {
             return (
-              <TouchableOpacity style={{alignItems:"center",justifyContent:"center", backgroundColor: "#4c4c4c", height: 170, width: 175,margin:10 }}>
+              <TouchableOpacity style={{alignItems:"center",justifyContent:"center", backgroundColor: "#4c4c4c", height: 170, width: 175,margin:10 }}
+               onPress={()=>navigation.navigate("Services")}
+              >
                 <Image
                  source={item.image}
                  style={{width:80,height:80,resizeMode:"contain"}}

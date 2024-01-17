@@ -25,21 +25,18 @@ const ServicesScreen = ({navigation,route}) => {
      if(selectedTimeSlots===""){
       return Alert.alert("Oops🙁","Please select a time slot")
      };
-      const changeStatus = data.services[`${selectedService.id}`].timeSlots;
-      console.log(changeStatus)
-   
+     
 
      Alert.alert("Hurray😊","your booking has been confirmed");
     } catch (error) {
       console.log(error)
     }
-    //  finally {
-    //   setName("");
-    //   setEmail("");
-    //   setSelectedTimeSlots("");
-    //   setModalVisible(false);
-    //   navigation.navigate("Bookings")
-    // }
+     finally {
+      setName("");
+      setEmail("");
+      setSelectedTimeSlots("");
+      setModalVisible(false);
+    }
   };
 
   return (
@@ -102,7 +99,11 @@ const ServicesScreen = ({navigation,route}) => {
           return (
             <>
               <View style={{ flex: 1, borderWidth: 1, borderColor: "#4c4c4c", margin: 10, borderRadius: 10, padding: 15, }}>
+                <View style={{flexDirection:"row",alignItems:"center",justifyContent:"space-between"}}>
+
                 <Text style={{ fontSize: 23, fontWeight: "700", marginTop: 10, }}>{item.type}</Text>
+                <Text style={{ fontSize: 16, fontWeight: "700", marginTop: 10, color:"#0096ff"}}>{item.timing}</Text>
+                </View>
                 <Text style={{ fontSize: 13, fontWeight: "700", marginTop: 10, alignSelf: "center" }}>{item.description}</Text>
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
 

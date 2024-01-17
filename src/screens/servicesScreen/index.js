@@ -6,165 +6,6 @@ import { Picker } from '@react-native-picker/picker';
 
 import styles from "./style.js";
 
-const services = [
-  {
-    id: 1,
-    type: "Hair Cut",
-    time: "20 min",
-    status: "available",
-    description: "best hair in the world",
-    price: "Rs 150",
-    timeSlots: [
-      {
-        timing: "9:00 Am",
-        booked: false
-      },
-      {
-        timing: "10:00 Am",
-        booked: false
-      },
-      {
-        timing: "11:00 Am",
-        booked: false
-      },
-      {
-        timing: "12:00 Pm",
-        booked: false
-      },
-    ]
-  },
-  {
-    id: 2,
-    type: "Shaving",
-    time: "12 min",
-    status: "available",
-    description: "This hair cut will bring your confidence back",
-    price: "Rs 100",
-    timeSlots: [
-      {
-        timing: "9:00 Am",
-        booked: false
-      },
-      {
-        timing: "10:00 Am",
-        booked: false
-      },
-      {
-        timing: "11:00 Am",
-        booked: false
-      },
-      {
-        timing: "12:00 Pm",
-        booked: false
-      },
-    ]
-  },
-  {
-    id: 3,
-    type: "Hair coloring",
-    time: "50 min",
-    status: "booked",
-    description: "The color of your passion",
-    price: "Rs 350",
-    timeSlots: [
-      {
-        timing: "9:00 Am",
-        booked: false
-      },
-      {
-        timing: "10:00 Am",
-        booked: false
-      },
-      {
-        timing: "11:00 Am",
-        booked: false
-      },
-      {
-        timing: "12:00 Pm",
-        booked: false
-      },
-    ]
-  },
-  {
-    id: 4,
-    type: "Hair Cut",
-    time: "30 min",
-    status: "available",
-    description: "Style with attitude",
-    price: "Rs 200",
-    timeSlots: [
-      {
-        timing: "9:00 Am",
-        booked: false
-      },
-      {
-        timing: "10:00 Am",
-        booked: false
-      },
-      {
-        timing: "11:00 Am",
-        booked: false
-      },
-      {
-        timing: "12:00 Pm",
-        booked: false
-      },
-    ]
-  },
-  {
-    id: 5,
-    type: "Hair Cut",
-    time: "40 min",
-    status: "available",
-    description: "This hair cut will bring your confidence back",
-    price: "Rs 160",
-    timeSlots: [
-      {
-        timing: "9:00 Am",
-        booked: false
-      },
-      {
-        timing: "10:00 Am",
-        booked: false
-      },
-      {
-        timing: "11:00 Am",
-        booked: false
-      },
-      {
-        timing: "12:00 Pm",
-        booked: false
-      },
-    ]
-  },
-  {
-    id: 6,
-    type: "Hair Cut",
-    time: "35 min",
-    status: "available",
-    description: "This hair cut will bring your confidence back",
-    price: "Rs 130",
-    timeSlots: [
-      {
-        timing: "9:00 Am",
-        booked: false
-      },
-      {
-        timing: "10:00 Am",
-        booked: false
-      },
-      {
-        timing: "11:00 Am",
-        booked: false
-      },
-      {
-        timing: "12:00 Pm",
-        booked: false
-      },
-    ]
-  },
-];
-
 const ServicesScreen = ({navigation,route}) => {
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedService, setSelectedService] = useState("");
@@ -174,7 +15,7 @@ const ServicesScreen = ({navigation,route}) => {
 
   const bookingHandler = async () => {
     try {
-     if(name===""){
+     if(name ===""){
       return Alert.alert("Oops🙁","Name cannot be empty")
      }
      if(email===""){
@@ -183,16 +24,22 @@ const ServicesScreen = ({navigation,route}) => {
      if(selectedTimeSlots===""){
       return Alert.alert("Oops🙁","Please select a time slot")
      };
+     const changeStatus = services.filter((item,index)=>{
+         item.id == selectedService.id
+     });
+     console.log(changeStatus)
+
      Alert.alert("Hurray😊","your booking has been confirmed");
     } catch (error) {
       console.log(error)
-    } finally {
-      setName("");
-      setEmail("");
-      setSelectedTimeSlots("");
-      setModalVisible(false);
-      navigation.navigate("Bookings")
     }
+    //  finally {
+    //   setName("");
+    //   setEmail("");
+    //   setSelectedTimeSlots("");
+    //   setModalVisible(false);
+    //   navigation.navigate("Bookings")
+    // }
   };
 
   return (
